@@ -132,4 +132,37 @@
 ::-webkit-scrollbar-corner 边角，即两个滚动条的交汇处
 ::-webkit-resizer 两个滚动条的交汇处上用于通过拖动调整元素大小的小控件
 ```
-### 
+
+### css中引用路径
+```
+js中:
+import tool from '@/utils/xxx' (可以引用)
+css中:
+@import '@/assets/css/reset.sass' (报错)
+```
+
+>分析
+
+原因是 css 文件会被用 css-loader 处理，这里 css @import 后的字符串会被 css-loader 视为绝对路径解析，因为我们并没有添加 css-loader 的 alias，所以会报找不到 @ 目录。
+
+>解决
+
+在 Webpack 中 css import 使用 alias 相对路径的解决办法有两种；
+
+一是直接为 css-loader 添加 ailas 的路径，但是在 vue-webpack 给的模板中，单独针对这个插件添加配置就显得麻烦冗余了；
+
+二是在引用路径的字符串最前面添加上 ~ 符号，如 @import "~@/style/theme"；Webpack 会将以 ~ 符号作为前缀的路径视作依赖模块而去解析，这样 @ 的 alias 配置就能生效了。
+
+>总结
+
+
+- ~ 视为模块解析是 webpack 做的事，不是 css-loader 做的事。
+
+- 各类非 js 直接引用（import require）静态资源，依赖相对路径加载问题，都可以用 ~ 语法完美解决；
+
+- 例如 css module 中： @import "~@/style/theme"
+
+- css 属性中： background: url("~@/assets/xxx.jpg")
+
+- html 标签中： `<img src="~@/assets/xxx.jpg" alt="alias">`
+```

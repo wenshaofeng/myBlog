@@ -60,6 +60,7 @@ methods:{
 ```
 - 定制化主题
 
+
 ### Vue中初始化ECharts
 因为 ECharts 初始化必须绑定 dom，所以我们只能在 vue 的 mounted 生命周期里进行初始化。
 
