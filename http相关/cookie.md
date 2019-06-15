@@ -72,6 +72,16 @@ if (req.host === 'test.com') {
 res.setHeader('Set-Cookie', ['name=Jack;path=/user'])
 ```
 
+
+
+
+
+
+
+## js-cookie 插件
+
+
+
 ## 学习链接
 
 - [MDN cookie](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies)
