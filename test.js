@@ -36,7 +36,7 @@
 //     console.log(err+"操你爸");
     
 // })
-// 'use strict' 
+'use strict' 
 {
 "use strict"
     const player = {
@@ -65,22 +65,10 @@
     console.log(player.firstPlayer);
     
     player.firstPlayer = "诺维斯基"
-    // player.lastPlayer = 'ds'
+    player.lastPlayer = 'ds'
     player.firstPlayer = 222
     console.log(player.firstPlayer);
     console.log(player.lastPlayer);
     
 }
 
-function foo(){
-    let a=b=0;
-    a++
-    return a 
-}
-
-foo()
-console.log(typeof a);
-console.log(a);
-
-console.log(typeof b);
-console.log(b);
