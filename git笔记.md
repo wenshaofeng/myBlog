@@ -100,7 +100,11 @@ Git 目录下的一个文件，存储的是即将进入下个 commit 内容的�
 
 ### 功能分支工作流
 
-
+1. git clone 一份远程仓库的代码
+2. 任何新的功能（feature）或 bug 修复全都新建一个 branch 来写；
+3. 将新的功能分支推送到远程仓库
+4. 审核、通过了以后合并到 develop 或者 release 分支，让测试测试，通过后合并至master，并删除功能分支
+5. 也可以使用 GitHub 的 `pull request` 将新分支推送之远端，在GitHub上确认是否合并至 master 分支
 
 ### GitFlow工作流
 
