@@ -107,6 +107,7 @@ Git 目录下的一个文件，存储的是即将进入下个 commit 内容的�
 5. 也可以使用 GitHub 的 `pull request` 将新分支推送之远端，在GitHub上确认是否合并至 master 分支
 
 ### GitFlow工作流
+![](https://upload-images.jianshu.io/upload_images/9249356-65a0d2a8cb2f46f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### Fork工作流
 
