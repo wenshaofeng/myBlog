@@ -60,6 +60,52 @@ Git 目录下的一个文件，存储的是即将进入下个 commit 内容的�
 
 回到之前关于游戏保存点的示例，你可以将分支看做在游戏中设立保存点后，尝试一个有风险的招式。如果有风险的招式不奏效，则回到保存的位置。令分支非常强大的关键之处是你可以在一个分支上设定保存点，然后切换到另一个分支并继续设定保存点。
 
+#### 关于分支的几种操作
+[Git知识总览(五) Git中的merge、rebase、cherry-pick以及交互式rebase](https://www.cnblogs.com/ludashi/p/8213550.html)
+
+#####  cherry-pick (遴选)
+可以选择某一个分支中的一个或几个commit(s)来进行操作。
+
+主要使用的场合：
+
+- 把弄错分支的提交移动到正确的地方
+- 把其他分支的提交添加到现在的分支
+
+
+它解决的问题就是：在本地 master 分支上做了一个commit ( 38361a68138140827b31b72f8bbfd88b3705d77a ) ，如何把它放到 本地开发 old_cc 分支上？
+
+例如，假设我们有个稳定版本的分支，叫v2.0，另外还有个开发版本的分支v3.0，我们不能直接把两个分支合并，这样会导致稳定版本混乱，但是又想增加一个v3.0中的功能到v2.0中，这里就可以使用cherry-pick了。
+
+```
+# 先在v3.0中查看要合并的commit的commit id
+git log
+# 假设是 commit f79b0b1ffe445cab6e531260743fa4e08fb4048b
+
+# 切到v2.0中
+git check v2.0
+
+# 合并commit
+git cherry-pick f79b0b1ffe445cab6e531260743fa4e08fb4048b
+```
+
+当两个分支各自前进，即"分叉了后"
+![](./img/git.webp)
+#####  git merge
+在这里，你可以用"pull"命令把"origin"分支上的修改拉下来并且和你的修改合并； 结果看起来就像一个新的"合并的提交"(merge commit)。
+![](./img/merge.webp)
+#####  git rebase
+但是，如果你想让"mywork"分支历史看起来像没有经过任何合并一样，你也许可以用 git rebase:
+![](./img/rebase.webp)
+当'mywork'分支更新之后，它会指向这些新创建的提交(commit),而那些老的提交会被丢弃。 如果运行垃圾收集命令(pruning garbage collection), 这些被丢弃的提交就会删除. （请查看 git gc)
+
+![](./img/git-gc.webp)
+有点类似 git merge，但是两者又有不同，merge 适合那种比较琐碎的，简单的合并，系统级的合并还是用 rebase 吧。
+
+打个比方，你有两个抽屉A和B，里面都装了衣服，现在想把B中的衣服放到A中，git merge 是那种横冲直撞型的，拿起B就倒入A里面，如果满了（冲突）再一并整理；而 git rebase 就很持家了，它会一件一件的从B往A中加，会根据一开始放入的时间顺序的来加，如果满了你可以处理这一件，你可以继续加，或者跳过这一件，又或者不加了，把A还原。
+
+
+
+
 ##  引用 commit :HEAD、master 与 branch 
 
 ### HEAD：当前 commit 的引用
