@@ -3,38 +3,7 @@
 
 ## 基本的几个概念
 
-### 文件的三种状态
 
-
-
-![](https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2391503317,2295283142&fm=26&gp=0.jpg)
-
-
-
-#### Working directory
-
-- 工作目录
-- 通过checkout从本地仓库提取
-- 可直接修改
-
-#### Staging area
-
-- 缓存区域
-- 通过git add/remove来修改
-
-#### Repository
-
-- 本地仓库
-- 通过commit提交版本
-- 通过reset/merge进行变更
-
-### 远程仓库
-
-![](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536601302768&di=417275dc1b9909932edb8b62c21638e4&imgtype=0&src=http%3A%2F%2Fimages.cnblogs.com%2Fcnblogs_com%2Fwupeiqi%2F662608%2Fo_git.png)
-
-- 通过push推送版本至远程仓库
-- 通过fetch拉去版本至本地仓库
-- pull = fetch + merge
 
 ### 提交（Commit）
 
