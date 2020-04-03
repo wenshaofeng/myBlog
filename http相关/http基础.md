@@ -4,7 +4,10 @@
 **浏览器输入一个URL后HTTP请求返回的完整过程**
 ![](https://upload-images.jianshu.io/upload_images/9249356-996b52a3c852ebc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](https://user-gold-cdn.xitu.io/2018/10/18/16685737b823244c?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
 1. DNS 解析
+  - 查找本地的 host 文件，如果有映射，就按映射的 ip 地址进行连接  
+  - （一层一层往外查，没有就去查**根域名服务器**和**镜像出来的根域名服务器**，然后根服务器就会去找对应的域名如（.cn/.xyz））
 2. TCP 连接
 3. HTTP 请求抛出
 4. 服务端处理请求，HTTP 响应返回

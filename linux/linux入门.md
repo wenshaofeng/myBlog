@@ -81,9 +81,39 @@ chkconfig sshd on
 
 
 ### SSH客户端连接服务器
-
+比如 A （我的mac）要连接某台云服务器B
+- 在 A 的`～/.ssh/config`中配置
+```
+host myweb 
+        HostName <B的ip>
+        User root（B的用户） 
+        Port 22 （端口）
+```
+- 在 A 中输入 `ssh myweb` 再输入用户名和密码即可登入B
 ### SSH.config 用法详解
 
 
-### 免密码登录方案  SSH key
 
+
+
+### 免密码登录方案  SSH key
+原理很简单，就是让服务器存一份本地的公钥，借助本地和服务器之间的一个认证机制，可以不输入密码直接登录服务器。
+
+### 常见的一些错误
+#### ssh登录时提示permission denied please try again
+
+1. root远程登录SSH：
+修改/etc/ssh/sshd_config文件。找如下的一句
+```
+#PermitRootLogin yes
+```
+要把前面的#号去掉。
+PermitRootLogin yes
+
+2. 重启sshd服务器
+
+`[root@jdfjak4dfa]# service sshd restart`
+
+```
+
+```

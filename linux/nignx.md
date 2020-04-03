@@ -1,4 +1,4 @@
-### 记一次前端的打包上传 和 最基本的 nginx 配置
+## 记一次前端的打包上传 和 最基本的 nginx 配置
 1. 连接云服务器
 2. 安装 nginx `yum install nginx`
 3. 给 nginx 指定配置文件  `nginx -t`
@@ -20,4 +20,11 @@
 7. 配置文件中
 ![](https://upload-images.jianshu.io/upload_images/9249356-b453566b91bb0328.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-8. 完成
+8. 查看 nginx 语法是否正确，并重启
+```shell
+# 查看语法
+nginx -t
+# 重启
+nginx -s reload
+```
+ 
