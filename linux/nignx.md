@@ -27,4 +27,48 @@ nginx -t
 # 重启
 nginx -s reload
 ```
- 
+9. 简单配置网站https 
+
+```conf
+    server {
+        listen 80;
+        #填写绑定证书的域名
+        server_name greninja14ljw.cn;
+        #把http的域名请求转成https (永久重定向)
+        return 301 https://$host$request_uri;
+    }
+
+    server {
+        listen 443;
+        server_name greninja14ljw.cn;
+        ssl on;
+        #证书文件名称
+        ssl_certificate /etc/nginx/1_greninja14liw.cn_bundle.crt;
+        #私钥文件名称
+        ssl_certificate_key /etc/nginx/2_greninja14ljw.cn.key;
+        ssl_session_timeout 5m;
+        #请按照以下协议配置
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        #请按照以下套件配置，配置加密套件，写法遵循 openssl 标准。
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+        ssl_prefer_server_ciphers on;
+
+        root /myVuepress/dist/;
+        index index.html;
+
+        location ~ .*\.(js|css|png|jpg|gif)$ {
+            root /myVuepress/dist; #站点根目录
+            if (-f $request_filename) {
+                expires 1d;
+                break;
+            }
+        }
+
+        location / {
+            if ($uri ~ ^/((?!js)(?!img)(?!css)(?!json)(?!fonts).)*$) {
+                rewrite .* /index.html break ;
+            }
+            index index.htm index.html ;
+        }
+    }
+```
